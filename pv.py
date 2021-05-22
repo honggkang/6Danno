@@ -16,20 +16,20 @@ if __name__ == "__main__":
 
     pcd = []
     for name in args.input:
-        tmp = PointCloud()
-        tmp = read_point_cloud( name ) 
+        tmp = geometry.PointCloud()
+        tmp = io.read_point_cloud( name ) 
         pcd.append(tmp)
         print(tmp)
         #draw_geometries([tmp])
 
     if len(args.input) == 1:
-        draw_geometries([pcd[0]])
+        visualization.draw_geometries([pcd[0]])
     elif len(args.input) == 2:
-        draw_geometries([pcd[0],pcd[1]])
+        visualization.draw_geometries([pcd[0],pcd[1]])
     elif len(args.input) == 3:
-        draw_geometries([pcd[0],pcd[1],pcd[2]])
+        visualization.draw_geometries([pcd[0],pcd[1],pcd[2]])
     elif len(args.input) == 4:
-        draw_geometries([pcd[0],pcd[1],pcd[2],pcd[3]])
+        visualization.draw_geometries([pcd[0],pcd[1],pcd[2],pcd[3]])
     elif 4 < len(args.input):
         print('Too many inputs.')
     

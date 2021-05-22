@@ -23,8 +23,8 @@ def Centering( _cloud_in ):
     center = np.mean(np_m, axis=0)
     np_m[:] -= center
     
-    cloud_off = o3.PointCloud()
-    cloud_off.points = o3.Vector3dVector(np_m)
+    cloud_off = o3.geometry.PointCloud()
+    cloud_off.points = o3.utility.Vector3dVector(np_m)
     
     return cloud_off, center
 
