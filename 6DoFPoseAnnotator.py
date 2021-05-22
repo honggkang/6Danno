@@ -264,7 +264,7 @@ if __name__ == "__main__":
     o3.io.write_point_cloud( "cloud_rot_ds.ply", CLOUD_ROT )
     
     cloud_m.transform( all_transformation )
-    o3.write_point_cloud( "cloud_rot.ply", cloud_m )
+    o3.io.write_point_cloud( "cloud_rot.ply", cloud_m )
     img_mapped_original = mapping.Cloud2Image( cloud_m )
     cv2.imwrite("img_mapped.png", img_mapped_original)
 
