@@ -261,7 +261,7 @@ if __name__ == "__main__":
     cv2.destroyAllWindows()
 
     """ Save output files """
-    o3.write_point_cloud( "cloud_rot_ds.ply", CLOUD_ROT )
+    o3.io.write_point_cloud( "cloud_rot_ds.ply", CLOUD_ROT )
     
     cloud_m.transform( all_transformation )
     o3.write_point_cloud( "cloud_rot.ply", cloud_m )
