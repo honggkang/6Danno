@@ -256,12 +256,61 @@ if __name__ == "__main__":
             all_transformation = np.dot( rotation, all_transformation )
 
             generateImage( mapping, im_color )
-
+        
+        """ Translation """
         if key == ord("w"):
-            print('Translation across z-axis')
-            translation = c3D.ComputeTransformationMatrixAroundCentroid(CLOUD_ROT, 0, 0, 0)
-            print(translation)
+            print('Translation across z-axis (+)')
+            translation = c3D.ComputeTranslation( CLOUD_ROT, 0, 0, 0.01)
             
+            CLOUD_ROT.transform( translation )
+            all_transformation = np.dot( translation, all_transformation )
+
+            generateImage(mapping, im_color)
+        if key == ord("e"):
+            print('Translation across z-axis (-)')
+            translation = c3D.ComputeTranslation( CLOUD_ROT, 0, 0, -0.01)
+            
+            CLOUD_ROT.transform( translation )
+            all_transformation = np.dot( translation, all_transformation )
+
+            generateImage(mapping, im_color)
+        
+
+        if key == ord("s"):
+            print('Translation across y-axis (+)')
+            translation = c3D.ComputeTranslation( CLOUD_ROT, 0, 0.01, 0)
+            
+            CLOUD_ROT.transform( translation )
+            all_transformation = np.dot( translation, all_transformation )
+
+            generateImage(mapping, im_color)
+        if key == ord("d"):
+            print('Translation across y-axis (-)')
+            translation = c3D.ComputeTranslation( CLOUD_ROT, 0, -0.01, 0)
+            
+            CLOUD_ROT.transform( translation )
+            all_transformation = np.dot( translation, all_transformation )
+
+            generateImage(mapping, im_color)
+
+
+        if key == ord("x"):
+            print('Translation across x-axis (+)')
+            translation = c3D.ComputeTranslation( CLOUD_ROT, 0.01, 0, 0)
+            
+            CLOUD_ROT.transform( translation )
+            all_transformation = np.dot( translation, all_transformation )
+
+            generateImage(mapping, im_color)
+        if key == ord("c"):
+            print('Translation across x-axis (-)')
+            translation = c3D.ComputeTranslation( CLOUD_ROT, -0.01, 0, 0)
+            
+            CLOUD_ROT.transform( translation )
+            all_transformation = np.dot( translation, all_transformation )
+
+            generateImage(mapping, im_color)
+ 
 
     cv2.destroyAllWindows()
 

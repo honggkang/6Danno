@@ -48,6 +48,28 @@ def ComputeTransformationMatrixAroundCentroid( _cloud_in, _roll, _pitch, _yaw ):
     return final 
 
 
+def ComputeTranslation( _cloud_in, _x, _y, _z ):
+
+    """ offset center """
+    np_in = np.asarray(_cloud_in.points) 
+    center = np.mean(np_in, axis=0)
+    offset = np.identity(4)
+    offset[0:3,3] -= center
+
+    """ translation """
+    rot = np.identity(4)
+    rot[0][3] = _x
+    rot[1][3] = _y
+    rot[2][3] = _z
+    
+    """ reverse offset """
+    reverse = np.identity(4)
+    reverse[0:3,3] = center
+
+    final = np.dot( reverse, np.dot( rot, offset ) )
+
+    return final 
+
 def Scaling( cloud_in, scale ):
     """
     multiply scaling factor to the input point cloud.
