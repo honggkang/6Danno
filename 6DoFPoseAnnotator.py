@@ -256,6 +256,11 @@ if __name__ == "__main__":
             all_transformation = np.dot( rotation, all_transformation )
 
             generateImage( mapping, im_color )
+
+        if key == ord("w"):
+            print('Translation across z-axis')
+            translation = c3D.ComputeTransformationMatrixAroundCentroid(CLOUD_ROT, 0, 0, 0)
+            print(translation)
             
 
     cv2.destroyAllWindows()
